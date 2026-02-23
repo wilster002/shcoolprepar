@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+
+class Etudiantcontroller extends AbstractController{
+    /**
+     * @Route("/etudiant", name="etudiant")
+     */
+
+    public function etudiant():Response{
+        return $this->render('etudiant.html.twig');
+    }
+}
+
+
+?>
