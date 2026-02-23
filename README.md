@@ -1,60 +1,61 @@
-SchoolPrepare
-SchoolPrepare est une application web développée avec Symfony suivant l’architecture MVC. Elle propose une séparation claire entre l’espace Enseignant et l’espace Étudiant.
+                                                                   SchoolPrepare
 
+                                                                   
+SchoolPrepare est une application web de gestion pédagogique développée avec le framework Symfony. Elle est conçue pour offrir une interface fluide et distincte entre les enseignants et les étudiants, en suivant rigoureusement l'architecture MVC.
 
+                                                             Technologies utilisées
+Langage : PHP 7.4+
+Framework : Symfony
+Moteur de template : Twig
+Gestionnaire de dépendances : Composer
+Versionnage : Git
 
-1. Technologies utilisées
-- PHP
-- Symfony
-- Composer
-- Git
+                                                               Architecture du projet
+Le projet respecte le design pattern MVC pour une maintenance facilitée :
+Modèle : Gestion des données (via Doctrine ORM à venir).
+Vue (View) : Interfaces utilisateur développées avec Twig.
+Contrôleur : Orchestration de la logique applicative et des routes.
 
+                                                            Fonctionnalités actuelles
+                                                            
+Accueil Dynamique : Point d'entrée unique avec routage intelligent.
+Espace Enseignant : Tableau de bord dédié à la gestion des cours et notes.
+Espace Étudiant : Interface de consultation des ressources et résultats.
+Routage Flexible : Utilisation des annotations PHP pour une gestion claire des URLs.
 
-2. Architecture du projet
-Le projet respecte l’architecture MVC (Modèle - Vue - Contrôleur) :
-• Model : Structure des données et logique métier.
-• View : Templates Twig pour l’interface utilisateur.
-• Controller : Gestion des routes et de la logique applicative.
-
-
-4. Fonctionnalités actuelles
-• Page d’accueil dynamique.
-• Accès à l’espace Enseignant.
-• Accès à l’espace Étudiant.
-• Organisation des contrôleurs et templates.
-
-
-6. Installation et exécution
-   
-Étape 1 : Cloner le projet
+                                                    Installation et Exécution
+                                                    
+                                                    
+Suivez ces étapes pour installer le projet localement :
+Étape 1 : Cloner le dépôt
+Bash
 git clone https://github.com/wilster002/shcoolprepar.git
 cd shcoolprepar
-
 Étape 2 : Installer les dépendances
+Bash
 composer install
+Étape 3 : Lancer le serveur local
 
-Étape 3 : Lancer le serveur
-symfony serve
+Bash
+symfony serve -d
+# Ou si vous n'avez pas le CLI Symfony :
+php -S 127.0.0.1:8000 -t public
+Puis ouvrez votre navigateur à l'adresse : http://127.0.0.1:8000
 
-Puis ouvrir : http://127.0.0.1:8000
-
-8. Structure du projet
+                                                      Structure des dossiers
+                                                      
+Plaintext
 src/
-   └── Controller/
-templates/
-config/
-public/
+ └── Controller/      # Logique de contrôle (Accueil, Enseignant, etc.)
+templates/            # Fichiers Twig (Vues HTML)
+config/               # Configuration des routes et services
+public/               # Point d'entrée (index.php, CSS, Images)
 
+                                          Diagrammes (Conception)
+                                          
+Cas d’utilisation : Analyse des interactions acteurs (Enseignant/Étudiant).
+Entité–Relation (ERD) : Modélisation de la future base de données (Classes, Utilisateurs).
 
-10. Diagrammes
-• Diagramme de cas d’utilisation.
-• Diagramme Entité–Relation préliminaire.
-
-
-12. Dépôt Git
-Lien du dépôt :
-https://github.com/wilster002/shcoolprepar.git
-
-
-14. Auteur
-Projet réalisé dans le cadre d’un travail académique.
+                                                       👤 Auteur
+                                                       
+Wilster - Développement et architecture - Mon GitHub
