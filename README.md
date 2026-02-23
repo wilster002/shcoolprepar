@@ -51,11 +51,11 @@ templates/            # Fichiers Twig (Vues HTML)
 config/               # Configuration des routes et services
 public/               # Point d'entrée (index.php, CSS, Images)
 
-                                          Diagrammes (Conception)
+                                                        Diagrammes (Conception)
                                           
 Cas d’utilisation : Analyse des interactions acteurs (Enseignant/Étudiant).
 Entité–Relation (ERD) : Modélisation de la future base de données (Classes, Utilisateurs).
 
-                                                       👤 Auteur
+                                                            Auteur
                                                        
 Wilster - Développement et architecture - Mon GitHub
