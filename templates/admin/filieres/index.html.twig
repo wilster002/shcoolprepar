@@ -1,111 +1,49 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+{% extends 'admin/base.html.twig' %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}
-        <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+{% block title %}Gestion des Filières{% endblock %}
 
-nav {
-    background: #2980b9;
-    padding: 10px;
-    text-align: center;
-}
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
-nav a:hover {
-    text-decoration: underline;
-}
+{% block body %}
+<h2>Gestion des Filières</h2>
 
-main {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
+<a href="#" class="btn">Ajouter une Filière</a>
 
-.filiere-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.filiere-card {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    flex: 1 1 220px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.filiere-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.filiere-card h3 {
-    margin-top: 0;
-    color: #3498db;
-}
-
-.filiere-card p {
-    color: #555;
-}
-</style>
-
-<nav>
-    <a href="{{ path('dashbordadmin') }}">Accueil</a>
-    <a href="{{ path('filieres') }}">Filières</a>
-    <a href="{{ path('etablissements') }}">Établissements</a>
-</nav>
-
-<main>
-    <h2>Liste des Filières</h2>
-    <div class="filiere-list">
-        <div class="filiere-card">
-            <h3>Informatique</h3>
-            <p>Développement, réseau et cybersécurité.</p>
-        </div>
-        <div class="filiere-card">
-            <h3>Gestion</h3>
-            <p>Comptabilité, finance et management.</p>
-        </div>
-        <div class="filiere-card">
-            <h3>Marketing</h3>
-            <p>Publicité, communication et stratégie digitale.</p>
-        </div>
-        <div class="filiere-card">
-            <h3>Sciences</h3>
-            <p>Physique, chimie et biologie.</p>
-        </div>
-    </div>
-</main>
-        {% endblock %}
-    </body>
-</html>
-
-
-
-
-
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Informatique</td>
+            <td>Développement, réseau et cybersécurité</td>
+            <td>
+                <a href="#" class="btn">Modifier</a>
+                <a href="#" class="btn">Supprimer</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Gestion</td>
+            <td>Comptabilité, finance et management</td>
+            <td>
+                <a href="#" class="btn">Modifier</a>
+                <a href="#" class="btn">Supprimer</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Marketing</td>
+            <td>Publicité, communication et stratégie digitale</td>
+            <td>
+                <a href="#" class="btn">Modifier</a>
+                <a href="#" class="btn">Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
