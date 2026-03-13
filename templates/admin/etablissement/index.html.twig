@@ -1,0 +1,49 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Gestion des Établissements{% endblock %}
+
+{% block body %}
+<h2>Gestion des Établissements</h2>
+
+<a href="#" class="btn">Ajouter un Établissement</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Lycée Moderne</td>
+            <td>Enseignement secondaire complet</td>
+            <td>
+                <a href="#" class="btn">Modifier</a>
+                <a href="#" class="btn">Supprimer</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Université de Lomé</td>
+            <td>Formation supérieure et recherche</td>
+            <td>
+                <a href="#" class="btn">Modifier</a>
+                <a href="#" class="btn">Supprimer</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Institut Supérieur de Technologie</td>
+            <td>Technologies et métiers spécialisés</td>
+            <td>
+                <a href="#" class="btn">Modifier</a>
+                <a href="#" class="btn">Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

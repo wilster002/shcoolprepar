@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SchoolPrepar{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+        }
+
+        nav {
+            background: #2980b9;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Styles communs pour les cartes */
+        .card-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1 1 220px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        .card p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SchoolPrepar</h1>
+    </header>
+
+    <nav>
+    <a href="{{ path('home') }}">Accueil</a>
+    <a href="{{ path('filieres') }}">Filières</a>
+    <a href="{{ path('etablissements') }}">Établissements</a>
+    </nav>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2026 SchoolPrepar</p>
+    </footer>
+</body>
+</html>

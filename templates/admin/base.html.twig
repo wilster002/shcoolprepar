@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Admin - SchoolPrepar{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #2980b9;
+            color: white;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Administration - SchoolPrepar</h1>
+    </header>
+
+    <nav>
+        <a href="{{ path('dashbordadmin') }}">Dashboard</a>
+        <a href="{{ path('admin_filieres') }}">Filières</a>
+        <a href="{{ path('admin_etablissements') }}">Établissements</a>
+    </nav>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+</body>
+</html>
