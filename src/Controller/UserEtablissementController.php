@@ -5,10 +5,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/user")
+ */
 class UserEtablissementController extends AbstractController
 {    
     /**
-     * @Route("/user/etablissements", name="etablissements")
+     * @Route("/etablissements", name="user_etablissements")
      */
     public function index(): Response
     {
