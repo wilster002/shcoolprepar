@@ -1,79 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Bienvenue - SchoolPrepar{% endblock %}</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+{% extends 'front/base.html.twig' %}
 
-        .container {
-            text-align: center;
-            background: white;
-            padding: 50px 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            max-width: 600px;
-        }
+{% block title %}Bienvenue - SchoolPrepar{% endblock %}
 
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #555;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-
-        .btn-group {
-            display: flex;               /* boutons sur la même ligne */
-            justify-content: center;     /* centrer horizontalement */
-            gap: 15px;                   /* espace entre les boutons */
-            flex-wrap: wrap;             /* passe à la ligne si écran trop petit */
-        }
-
-        .btn-group a {
-            text-decoration: none;
-        }
-
-        .btn {
-            padding: 15px 25px;
-            background: #3498db;
-            color: white;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-    </style>
-</head>
-<body>
 {% block body %}
-<div class="container">
-    <h1>Bienvenue sur SchoolPrepar</h1>
-    <p>Veuillez choisir votre espace pour continuer :</p>
-    
-    <div class="btn-group">
-        <a href="{{ path('etablissements') }}"><span class="btn">Établissements</span></a>
-        <a href="{{ path('filieres') }}"><span class="btn">Filières</span></a>
-        <a href="https://github.com/wilster002/shcoolprepar/tree/master"><span class="btn">Voir le dépôt GitHub</span></a>
+<div class="text-center py-5">
+    <h1 class="display-5 fw-bold" style="color:#1a3c5e;">Bienvenue sur SchoolPrepar</h1>
+    <p class="lead text-muted mb-4">Veuillez choisir votre espace pour continuer :</p>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="{{ path('etablissements') }}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-building me-2"></i>Établissements
+        </a>
+        <a href="{{ path('filieres') }}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-journal-bookmark-fill me-2"></i>Filières
+        </a>
+        <a href="https://github.com/wilster002/shcoolprepar/tree/master" target="_blank" class="btn btn-outline-secondary btn-lg px-4">
+            <i class="bi bi-github me-2"></i>Voir le dépôt GitHub
+        </a>
+    </div>
+
+    <div class="row mt-5 g-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-4 text-center h-100">
+                <i class="bi bi-journal-bookmark-fill text-primary fs-1 mb-3"></i>
+                <h5 class="fw-bold">Filières</h5>
+                <p class="text-muted">Découvrez toutes les filières disponibles et choisissez votre orientation.</p>
+                <a href="{{ path('filieres') }}" class="btn btn-outline-primary btn-sm mt-auto">Explorer</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-4 text-center h-100">
+                <i class="bi bi-building text-success fs-1 mb-3"></i>
+                <h5 class="fw-bold">Établissements</h5>
+                <p class="text-muted">Consultez la liste des établissements partenaires de la plateforme.</p>
+                <a href="{{ path('etablissements') }}" class="btn btn-outline-success btn-sm mt-auto">Explorer</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-4 text-center h-100">
+                <i class="bi bi-mortarboard-fill text-warning fs-1 mb-3"></i>
+                <h5 class="fw-bold">Orientation</h5>
+                <p class="text-muted">Préparez votre avenir scolaire avec SchoolPrepar.</p>
+                <a href="#" class="btn btn-outline-warning btn-sm mt-auto">En savoir plus</a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
-</body>
-</html>

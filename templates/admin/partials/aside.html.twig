@@ -1,0 +1,52 @@
+<div id="sidebar" class="active">
+    <div class="sidebar-wrapper active">
+
+        <div class="sidebar-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ path('dashbordadmin') }}" style="text-decoration:none;">
+                    <span style="font-size:1.3rem;font-weight:800;color:#435ebe;">🎓 SchoolPrepar</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul class="menu">
+
+                <li class="sidebar-title">Menu Principal</li>
+
+                <li class="sidebar-item {{ app.request.attributes.get('_route') == 'dashbordadmin' ? 'active' : '' }}">
+                    <a href="{{ path('dashbordadmin') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-title">Gestion</li>
+
+                <li class="sidebar-item {{ app.request.attributes.get('_route') == 'admin_filieres' ? 'active' : '' }}">
+                    <a href="{{ path('admin_filieres') }}" class="sidebar-link">
+                        <i class="bi bi-journal-bookmark-fill"></i>
+                        <span>Filières</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ app.request.attributes.get('_route') == 'admin_etablissements' ? 'active' : '' }}">
+                    <a href="{{ path('admin_etablissements') }}" class="sidebar-link">
+                        <i class="bi bi-building"></i>
+                        <span>Établissements</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-title">Site</li>
+
+                <li class="sidebar-item">
+                    <a href="{{ path('home') }}" class="sidebar-link">
+                        <i class="bi bi-arrow-left-circle-fill"></i>
+                        <span>Voir le site</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

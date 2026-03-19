@@ -13,7 +13,7 @@ class AcceuilController extends AbstractController
      */
     public function accueil(): Response
     {
-        return $this->render('pageacceuill.html.twig');
+        return $this->render('home.html.twig');
     }
 }
 ?>
