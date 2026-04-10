@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Détail — {{ etablissement.nom }}{% endblock %}
+
+{% block body %}
+<div class="page-heading">
+    <div class="page-title-headings">
+        <h3>Détail de l'Établissement</h3>
+        <div>
+            <a href="{{ path('app_etablissement_edit', {'id': etablissement.id}) }}" class="btn btn-warning btn-sm me-1">
+                <i class="bi bi-pencil me-1"></i> Modifier
+            </a>
+            <a href="{{ path('app_etablissement_index') }}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left me-1"></i> Retour
+            </a>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title"><i class="bi bi-building text-success me-2"></i>{{ etablissement.nom }}</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr><th width="200">ID</th><td><span class="badge bg-light-success text-success">{{ etablissement.id }}</span></td></tr>
+                    <tr><th>Nom</th><td><strong>{{ etablissement.nom }}</strong></td></tr>
+                    <tr><th>Localisation</th><td>{{ etablissement.localisation }}</td></tr>
+                    <tr><th>Contact</th><td>{{ etablissement.contact }}</td></tr>
+                    <tr><th>Type</th><td>{{ etablissement.type }}</td></tr>
+                    <tr><th>Latitude</th><td>{{ etablissement.latitude }}</td></tr>
+                    <tr><th>Longitude</th><td>{{ etablissement.longitude }}</td></tr>
+                </tbody>
+            </table>
+            <div class="mt-3">
+                {{ include('etablissement/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

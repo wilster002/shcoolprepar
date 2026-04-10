@@ -1,0 +1,40 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Nom</label>
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Domaine</label>
+        {{ form_widget(form.domaine, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.domaine) }}
+    </div>
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Niveau</label>
+        {{ form_widget(form.niveau, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.niveau) }}
+    </div>
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Conditions d'admission</label>
+        {{ form_widget(form.conditions_admission, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.conditions_admission) }}
+    </div>
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Débouchés</label>
+        {{ form_widget(form.debouches, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.debouches) }}
+    </div>
+    <div class="col-12 mb-3">
+        <label class="form-label fw-semibold">Description</label>
+        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+        {{ form_errors(form.description) }}
+    </div>
+</div>
+<div class="d-flex gap-2 mt-2">
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-save me-1"></i> {{ button_label ?? 'Enregistrer' }}
+    </button>
+    <a href="{{ path('app_filiere_index') }}" class="btn btn-outline-secondary">Annuler</a>
+</div>
+{{ form_end(form) }}

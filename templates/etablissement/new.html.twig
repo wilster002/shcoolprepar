@@ -1,0 +1,24 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Nouvel Établissement{% endblock %}
+
+{% block body %}
+<div class="page-heading">
+    <div class="page-title-headings">
+        <h3>Ajouter un Établissement</h3>
+        <a href="{{ path('app_etablissement_index') }}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i> Retour à la liste
+        </a>
+    </div>
+</div>
+
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title"><i class="bi bi-plus-circle text-success me-2"></i>Nouvel Établissement</h4>
+        </div>
+        <div class="card-body">
+            {{ include('etablissement/_form.html.twig') }}
+        </div>
+    </div>
+</section>
+{% endblock %}

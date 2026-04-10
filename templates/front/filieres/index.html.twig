@@ -8,21 +8,19 @@
 </h2>
 
 <div class="card-list">
-    <div class="card">
-        <h3>Informatique</h3>
-        <p>Développement, réseau et cybersécurité.</p>
+    {% for filiere in filieres %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3 class="card-title">{{ filiere.nom }}</h3>
+            <p><i class="bi bi-journal-text text-primary me-1"></i> <strong>Description :</strong> {{ filiere.description }}</p>
+            <p><i class="bi bi-mortarboard-fill text-success me-1"></i> <strong>Domaine :</strong> {{ filiere.domaine }}</p>
+            <p><i class="bi bi-bar-chart-fill text-warning me-1"></i> <strong>Niveau :</strong> {{ filiere.niveau }}</p>
+            <p><i class="bi bi-check-circle-fill text-info me-1"></i> <strong>Conditions d'admission :</strong> {{ filiere.conditionsAdmission }}</p>
+            <p><i class="bi bi-briefcase-fill text-danger me-1"></i> <strong>Débouchés :</strong> {{ filiere.debouches }}</p>
+        </div>
     </div>
-    <div class="card">
-        <h3>Gestion</h3>
-        <p>Comptabilité, finance et management.</p>
-    </div>
-    <div class="card">
-        <h3>Marketing</h3>
-        <p>Publicité, communication et stratégie digitale.</p>
-    </div>
-    <div class="card">
-        <h3>Sciences</h3>
-        <p>Physique, chimie et biologie.</p>
-    </div>
+    {% else %}
+        <p class="text-center text-muted">Aucune filière trouvée.</p>
+    {% endfor %}
 </div>
 {% endblock %}

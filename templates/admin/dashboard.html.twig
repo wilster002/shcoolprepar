@@ -15,7 +15,9 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="text-muted font-semibold">Filières</h6>
-                        <h4 class="font-extrabold mb-0">3</h4>
+                        {%for filiere in filieres%}
+                        <h4 class="font-extrabold mb-0">{{filieres|length}}</h4>
+                        {%endfor%}
                     </div>
                     <div class="stats-icon blue">
                         <i class="bi bi-journal-bookmark-fill"></i>
@@ -30,8 +32,10 @@
             <div class="card-body px-4 py-4-5">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
+                    {%for etablissement in etablissements%}
                         <h6 class="text-muted font-semibold">Établissements</h6>
-                        <h4 class="font-extrabold mb-0">3</h4>
+                        <h4 class="font-extrabold mb-0">{{etablissements|length}}</h4>
+                    {%endfor%}
                     </div>
                     <div class="stats-icon green">
                         <i class="bi bi-building"></i>
@@ -90,24 +94,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                     {%for filiere in filieres%}
                         <tr>
-                            <td>1</td>
-                            <td><strong>Informatique</strong></td>
-                            <td>Développement, réseau et cybersécurité</td>
-                            <td><a href="{{ path('admin_filieres') }}" class="badge bg-primary">Voir</a></td>
+                            <td>{{filiere.id}}<td>
+                            <td><strong>{{filiere.nom}}</strong></td>
+                            <td>{{filiere.description}}</td>
+                            <td><a href="{{ path('app_filiere_index') }}" class="badge bg-primary">Voir</a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><strong>Gestion</strong></td>
-                            <td>Comptabilité, finance et management</td>
-                            <td><a href="{{ path('admin_filieres') }}" class="badge bg-primary">Voir</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><strong>Marketing</strong></td>
-                            <td>Publicité, communication et stratégie digitale</td>
-                            <td><a href="{{ path('admin_filieres') }}" class="badge bg-primary">Voir</a></td>
-                        </tr>
+                     {%endfor%}
                     </tbody>
                 </table>
             </div>
@@ -121,10 +115,10 @@
             </div>
             <div class="card-body">
                 <div class="d-grid gap-2">
-                    <a href="{{ path('admin_filieres') }}" class="btn btn-primary">
+                    <a href="{{ path('app_filiere_index') }}" class="btn btn-primary">
                         <i class="bi bi-journal-bookmark-fill me-2"></i>Gérer les Filières
                     </a>
-                    <a href="{{ path('admin_etablissements') }}" class="btn btn-outline-primary">
+                    <a href="{{ path('app_etablissement_index') }}" class="btn btn-outline-primary">
                         <i class="bi bi-building me-2"></i>Gérer les Établissements
                     </a>
                     <a href="https://github.com/wilster002/shcoolprepar/tree/master" target="_blank" class="btn btn-outline-secondary">

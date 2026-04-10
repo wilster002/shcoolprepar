@@ -1,0 +1,46 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Détail — {{ utilisateur.nom }} {{ utilisateur.prenom }}{% endblock %}
+
+{% block body %}
+<div class="page-heading">
+    <div class="page-title-headings">
+        <h3>Détail de l'Utilisateur</h3>
+        <div>
+            <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}" class="btn btn-warning btn-sm me-1">
+                <i class="bi bi-pencil me-1"></i> Modifier
+            </a>
+            <a href="{{ path('app_utilisateur_index') }}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left me-1"></i> Retour
+            </a>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title"><i class="bi bi-person-fill text-primary me-2"></i>{{ utilisateur.nom }} {{ utilisateur.prenom }}</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr><th width="200">ID</th><td><span class="badge bg-light-primary text-primary">{{ utilisateur.id }}</span></td></tr>
+                    <tr><th>Nom</th><td><strong>{{ utilisateur.nom }}</strong></td></tr>
+                    <tr><th>Prénom</th><td>{{ utilisateur.prenom }}</td></tr>
+                    <tr><th>Email</th><td>{{ utilisateur.email }}</td></tr>
+                    <tr><th>Rôle</th><td>
+                        <span class="badge {{ utilisateur.role == 'admin' ? 'bg-danger' : 'bg-secondary' }}">
+                            {{ utilisateur.role }}
+                        </span>
+                    </td></tr>
+                    <tr><th>Téléphone</th><td>{{ utilisateur.telephone }}</td></tr>
+                    <tr><th>Date d'inscription</th><td>{{ utilisateur.dateInscription ? utilisateur.dateInscription|date('d/m/Y') : '-' }}</td></tr>
+                </tbody>
+            </table>
+            <div class="mt-3">
+                {{ include('utilisateur/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

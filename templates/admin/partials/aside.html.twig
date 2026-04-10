@@ -24,28 +24,27 @@
                 <li class="sidebar-title">Gestion</li>
 
                 <li class="sidebar-item {{ app.request.attributes.get('_route') == 'admin_filieres' ? 'active' : '' }}">
-                    <a href="{{ path('admin_filieres') }}" class="sidebar-link">
+                    <a href="{{ path('app_filiere_index') }}" class="sidebar-link">
                         <i class="bi bi-journal-bookmark-fill"></i>
                         <span>Filières</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item {{ app.request.attributes.get('_route') == 'admin_etablissements' ? 'active' : '' }}">
-                    <a href="{{ path('admin_etablissements') }}" class="sidebar-link">
+                    <a href="{{ path('app_etablissement_index') }}" class="sidebar-link">
                         <i class="bi bi-building"></i>
                         <span>Établissements</span>
                     </a>
                 </li>
+                
+<li class="sidebar-item {{ app.request.attributes.get('_route') == 'app_utilisateur_index' ? 'active' : '' }}">
+    <a href="{{ path('app_utilisateur_index') }}" class="sidebar-link">
+        <i class="bi bi-people-fill"></i>
+        <span>Utilisateurs</span>
+    </a>
+</li>
 
-                <li class="sidebar-title">Site</li>
-
-                <li class="sidebar-item">
-                    <a href="{{ path('home') }}" class="sidebar-link">
-                        <i class="bi bi-arrow-left-circle-fill"></i>
-                        <span>Voir le site</span>
-                    </a>
-                </li>
-
+        
             </ul>
         </div>
     </div>
