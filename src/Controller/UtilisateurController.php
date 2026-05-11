@@ -9,6 +9,7 @@ use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/utilisateur')]
@@ -23,13 +24,27 @@ class UtilisateurController extends AbstractController
     }
 
     #[Route('/new', name: 'app_utilisateur_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UtilisateurRepository $utilisateurRepository): Response
-    {
+    public function new(
+        Request $request,
+        UtilisateurRepository $utilisateurRepository,
+        UserPasswordHasherInterface $passwordHasher
+    ): Response {
         $utilisateur = new Utilisateur();
-        $form = $this->createForm(UtilisateurType::class, $utilisateur);
+        $form = $this->createForm(UtilisateurType::class, $utilisateur, [
+            'validation_groups' => false,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $utilisateur->setRole('ROLE_USER');
+            $utilisateur->setDateInscription(new \DateTime());
+
+            $hashedPassword = $passwordHasher->hashPassword(
+                $utilisateur,
+                $form->get('mot_de_passe')->getData()
+            );
+            $utilisateur->setMotDePasse($hashedPassword);
+
             $utilisateurRepository->add($utilisateur, true);
 
             return $this->redirectToRoute('app_utilisateur_index', [], Response::HTTP_SEE_OTHER);
@@ -50,12 +65,26 @@ class UtilisateurController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_utilisateur_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Utilisateur $utilisateur, UtilisateurRepository $utilisateurRepository): Response
-    {
-        $form = $this->createForm(UtilisateurType::class, $utilisateur);
+    public function edit(
+        Request $request,
+        Utilisateur $utilisateur,
+        UtilisateurRepository $utilisateurRepository,
+        UserPasswordHasherInterface $passwordHasher
+    ): Response {
+        $form = $this->createForm(UtilisateurType::class, $utilisateur, [
+            'validation_groups' => false,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('mot_de_passe')->getData()) {
+                $hashedPassword = $passwordHasher->hashPassword(
+                    $utilisateur,
+                    $form->get('mot_de_passe')->getData()
+                );
+                $utilisateur->setMotDePasse($hashedPassword);
+            }
+
             $utilisateurRepository->add($utilisateur, true);
 
             return $this->redirectToRoute('app_utilisateur_index', [], Response::HTTP_SEE_OTHER);
