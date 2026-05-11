@@ -34,7 +34,7 @@ class Etablissement
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Le contact est obligatoire")
-     * @Assert\Range(min=1000000, message="Le numéro de contact doit être valide")
+     * @Assert\Range(min=1000000, notInRangeMessage="Le numéro de contact doit être valide")
      */
     private $contact;
 

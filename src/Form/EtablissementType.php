@@ -31,14 +31,6 @@ class EtablissementType extends AbstractType
                 'label' => 'Catégorie',
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Votre catégorie d\'enseignement']
             ])
-            ->add('latitude', NumberType::class, [
-                'label' => 'Latitude',
-                'attr' => ['class' => 'form-control', 'placeholder' => '48.8566']
-            ])
-            ->add('longitude', NumberType::class, [
-                'label' => 'Longitude',
-                'attr' => ['class' => 'form-control', 'placeholder' => '2.3522']
-            ])
         ;
     }
 
