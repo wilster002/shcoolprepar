@@ -15,25 +15,15 @@
         {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.email) }}
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-12 mb-3">
         <label class="form-label fw-semibold">Mot de passe</label>
-        {{ form_widget(form.mot_de_passe, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.mot_de_passe, {'attr': {'class': 'form-control', 'placeholder': 'Entrez un mot de passe sécurisé'}}) }}
         {{ form_errors(form.mot_de_passe) }}
     </div>
     <div class="col-md-6 mb-3">
-        <label class="form-label fw-semibold">Rôle</label>
-        {{ form_widget(form.role, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.role) }}
-    </div>
-    <div class="col-md-6 mb-3">
         <label class="form-label fw-semibold">Téléphone</label>
-        {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': '0600000000'}}) }}
         {{ form_errors(form.telephone) }}
-    </div>
-    <div class="col-md-6 mb-3">
-        <label class="form-label fw-semibold">Date d'inscription</label>
-        {{ form_widget(form.date_inscription, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.date_inscription) }}
     </div>
 </div>
 <div class="d-flex gap-2 mt-2">
