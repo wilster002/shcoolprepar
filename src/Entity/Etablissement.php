@@ -44,17 +44,7 @@ class Etablissement
      */
     private $type;
 
-    /**
-     * @ORM\Column(type="float")
-     * @Assert\Range(min=-90, max=90, message="La latitude doit être entre -90 et 90")
-     */
-    private $latitude;
 
-    /**
-     * @ORM\Column(type="float")
-     * @Assert\Range(min=-180, max=180, message="La longitude doit être entre -180 et 180")
-     */
-    private $longitude;
 
     public function getId(): ?int
     {
@@ -109,27 +99,5 @@ class Etablissement
         return $this;
     }
 
-    public function getLatitude(): ?float
-    {
-        return $this->latitude;
-    }
-
-    public function setLatitude(float $latitude): self
-    {
-        $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    public function getLongitude(): ?float
-    {
-        return $this->longitude;
-    }
-
-    public function setLongitude(float $longitude): self
-    {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
+  
 }

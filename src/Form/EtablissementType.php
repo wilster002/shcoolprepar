@@ -17,19 +17,19 @@ class EtablissementType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'label' => 'Nom de l\'établissement',
-                'attr' => ['class' => 'form-control', 'placeholder' => 'Nom complet']
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Donnez le nom de votre établissement']
             ])
             ->add('localisation', TextType::class, [
-                'label' => 'Localisation',
-                'attr' => ['class' => 'form-control', 'placeholder' => 'Adresse ou ville']
+                'label' => 'Localisation de l\'établissement',
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Décrivez l\'emplacement de votre établissement']
             ])
             ->add('contact', IntegerType::class, [
-                'label' => 'Contact téléphonique',
-                'attr' => ['class' => 'form-control', 'placeholder' => '0123456789']
+                'label' => 'Contact de l\'établissement',
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Le contact de votre établissement']
             ])
             ->add('type', TextType::class, [
-                'label' => 'Type d\'établissement',
-                'attr' => ['class' => 'form-control', 'placeholder' => 'Ex: Université, École...']
+                'label' => 'Catégorie',
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Votre catégorie d\'enseignement']
             ])
             ->add('latitude', NumberType::class, [
                 'label' => 'Latitude',

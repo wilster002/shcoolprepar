@@ -1,4 +1,4 @@
-﻿{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Connexion - SchoolPrepar{% endblock %}
 
@@ -13,7 +13,7 @@
                 <div class="card-body">
                     {% if error %}
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Erreur d''authentification!</strong>
+                            <strong>Erreur d'authentification!</strong>
                             {{ error.messageKey|trans(error.messageData, 'security') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
@@ -35,13 +35,13 @@
                             <label class="form-check-label" for="remember_me">Se souvenir de moi</label>
                         </div>
 
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token(''authenticate'') }}">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                         <button class="btn btn-primary w-100" type="submit">Se connecter</button>
                     </form>
 
                     <hr>
-                    <p class="text-center mb-0">Pas encore inscrit? <a href="{{ path(''app_register'') }}" class="text-decoration-none">Créer un compte</a></p>
+                    <p class="text-center mb-0">Pas encore inscrit? <a href="{{ path('app_register') }}" class="text-decoration-none">Créer un compte</a></p>
                 </div>
             </div>
         </div>

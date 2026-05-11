@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace App\Controller;
 
@@ -14,23 +14,23 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AuthController extends AbstractController
 {
-    #[Route(path: ''/login'', name: ''app_login'', methods: [''GET'', ''POST''])]
+    #[Route(path: '/login', name: 'app_login', methods: ['GET', 'POST'])]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute(''home'');
+            return $this->redirectToRoute('home');
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render(''security/login.html.twig'', [
-            ''last_username'' => $lastUsername,
-            ''error'' => $error
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error
         ]);
     }
 
-    #[Route(path: ''/register'', name: ''app_register'', methods: [''GET'', ''POST''])]
+    #[Route(path: '/register', name: 'app_register', methods: ['GET', 'POST'])]
     public function register(
         Request $request,
         UserPasswordHasherInterface $passwordHasher,
@@ -42,27 +42,27 @@ class AuthController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $utilisateur->setRole(''ROLE_USER'');
+            $utilisateur->setRole('ROLE_USER');
             $utilisateur->setDateInscription(new \DateTime());
 
             $hashedPassword = $passwordHasher->hashPassword(
                 $utilisateur,
-                $form->get(''mot_de_passe'')->getData()
+                $form->get('mot_de_passe')->getData()
             );
             $utilisateur->setMotDePasse($hashedPassword);
 
             $repo->add($utilisateur, true);
-            return $this->redirectToRoute(''app_login'');
+            return $this->redirectToRoute('app_login');
         }
 
-        return $this->render(''security/register.html.twig'', [
-            ''form'' => $form->createView()
+        return $this->render('security/register.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
-    #[Route(path: ''/logout'', name: ''app_logout'')]
+    #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
-        throw new \LogicException(''This method can be blank - it will be intercepted by the logout key on your firewall.'');
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }
