@@ -1,25 +1,85 @@
 {% extends 'front/base.html.twig' %}
 
-{% block title %}Établissements - SchoolPrepar{% endblock %}
+{% block title %}Nos Établissements - SchoolPrepare{% endblock %}
 
-{% block body %}
-<h2 class="fw-bold mb-4" style="color:#1a3c5e; border-left: 4px solid #2980b9; padding-left: 12px;">
-    Liste des Établissements
-</h2>
-
-<div class="card-list">
-    {% for etablissement in etablissements %}
-    <div class="card mb-3">
-        <div class="card-body">
-            <h3 class="card-title">{{ etablissement.nom }}</h3>
-            <p><i class="bi bi-geo-alt-fill text-primary me-1"></i> <strong>Localisation :</strong> {{ etablissement.localisation }}</p>
-            <p><i class="bi bi-telephone-fill text-success me-1"></i> <strong>Contact :</strong> {{ etablissement.contact }}</p>
-            <p><i class="bi bi-building text-warning me-1"></i> <strong>Type :</strong> {{ etablissement.type }}</p>
-            <p><i class="bi bi-map-fill text-info me-1"></i> <strong>Coordonnées :</strong> {{ etablissement.latitude }}, {{ etablissement.longitude }}</p>
+{% block page_header %}
+<!-- START SECTION TOP -->
+<section class="section-top">
+    <div class="container">
+        <div class="col-lg-10 offset-lg-1 text-center">
+            <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+                <h1>Nos Établissements</h1>
+                <ul>
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li> / Établissements</li>
+                </ul>
+            </div>
         </div>
     </div>
-    {% else %}
-        <p class="text-center text-muted">Aucun établissement trouvé.</p>
-    {% endfor %}
-</div>
+</section>
+<!-- END SECTION TOP -->
+{% endblock %}
+
+{% block body %}
+<!-- START ESTABLISHMENTS SECTION -->
+<section class="home_course section-padding">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>Découvrez Nos Établissements Partenaires</h2>
+            <p>Explorez les établissements de notre réseau et trouvez celui qui vous correspond.</p>
+        </div>
+
+        {% if etablissements|length > 0 %}
+        <div class="row">
+            {% for etablissement in etablissements %}
+            <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+                <div class="single_course">
+                    <div class="course_head" style="position: relative; overflow: hidden;">
+                        <img src="{{ asset('eduleb/img/course/1.png') }}" class="img-fluid" alt="{{ etablissement.nom }}" />
+                        <div style="position: absolute; top: 10px; right: 10px;">
+                            {% if etablissement.type|default(false) %}
+                            <span style="background: #f5576c; color: white; padding: 5px 10px; border-radius: 4px; font-size: 12px;">{{ etablissement.type }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="course_content" style="display: flex; flex-direction: column; height: 100%;">
+                        <h3><a href="#">{{ etablissement.nom }}</a></h3>
+
+                        <p style="color: #999; font-size: 14px; margin-bottom: 8px;">
+                            {% if etablissement.localisation|default(false) %}
+                            <i class="ti-map" style="color: #f5576c;"></i> {{ etablissement.localisation }}
+                            {% endif %}
+                        </p>
+
+                        <p style="margin-bottom: 12px; flex-grow: 1;">{{ etablissement.description|default('Établissement de qualité offrant une formation complète.')|length > 80 ? (etablissement.description|default('Établissement de qualité offrant une formation complète.')|slice(0, 80)) ~ '...' : (etablissement.description|default('Établissement de qualité offrant une formation complète.')) }}</p>
+
+                        <div style="margin-bottom: 15px; min-height: 40px;">
+                            <small style="color: #999; display: block; line-height: 1.4;">
+                                <i class="ti-building"></i>
+                                {% if etablissement.type|default(false) %}
+                                    Type: {{ etablissement.type }}
+                                {% else %}
+                                    Établissement d'enseignement
+                                {% endif %}
+                            </small>
+                        </div>
+
+                        <a class="btn_one" href="#" style="margin-top: auto; display: block;">Voir les Détails <i class="ti-arrow-top-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-md-12 text-center py-5">
+                <p class="text-muted fs-5">Aucun établissement trouvé pour le moment.</p>
+                <p class="text-muted">Veuillez réessayer plus tard.</p>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+<!-- END ESTABLISHMENTS SECTION -->
 {% endblock %}

@@ -1,68 +1,216 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}SchoolPrepar{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SchoolPrepare - Plateforme d'orientation scolaire">
+    <meta name="keywords" content="orientation, filières, établissements, conseillers">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <title>{% block title %}SchoolPrepare - Votre guide d'orientation{% endblock %}</title>
 
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; }
-        .navbar-brand { font-weight: 800; font-size: 1.3rem; }
-        .navbar { background: #1a3c5e !important; }
-        .card { transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
-        .card h3 { color: #1a3c5e; }
-        footer { background: #1a3c5e; color: white; }
-        footer a { color: #aad4f5; }
-        .card-list { display: flex; flex-wrap: wrap; gap: 20px; }
-        .card-list .card { flex: 1 1 220px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('eduleb/bootstrap/css/bootstrap.min.css') }}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('eduleb/fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('eduleb/fonts/themify-icons.css') }}">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{{ asset('eduleb/owlcarousel/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('eduleb/owlcarousel/css/owl.theme.css') }}">
+
+    <!-- Mobile Menu CSS -->
+    <link rel="stylesheet" href="{{ asset('eduleb/css/jquery-simple-mobilemenu.css') }}">
+
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="{{ asset('eduleb/css/magnific-popup.css') }}">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{{ asset('eduleb/css/animate.css') }}">
+
+    <!-- Main Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('eduleb/css/style.css') }}">
+
+    {% block stylesheets %}{% endblock %}
 </head>
-<body>
 
-    {# NAVBAR #}
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{{ path('home') }}">🎓 SchoolPrepar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+<body data-spy="scroll" data-offset="80">
+
+    <!-- START PRELOADER -->
+    <div class="preloaders">
+        <span class="loader"></span>
+    </div>
+    <!-- END PRELOADER -->
+
+    <!-- START NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background: white; border-bottom: 1px solid #ddd; padding: 12px 0;">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{{ path('home') }}" style="margin-right: 30px;">
+                <img src="{{ asset('eduleb/img/logo.png') }}" alt="SchoolPrepare" style="max-width: 130px;">
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto">
+
+            <!-- Menu Items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item">
-                        <a class="nav-link {{ app.request.attributes.get('_route') == 'home' ? 'active fw-bold' : '' }}"
-                           href="{{ path('home') }}">Accueil</a>
+                        <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ app.request.attributes.get('_route') == 'filieres' ? 'active fw-bold' : '' }}"
-                           href="{{ path('user_filieres') }}">Filières</a>
+                        <a class="nav-link" href="{{ path('user_filieres') }}">Filières</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ app.request.attributes.get('_route') == 'etablissements' ? 'active fw-bold' : '' }}"
-                           href="{{ path('user_etablissements') }}">Établissements</a>
+                        <a class="nav-link" href="{{ path('user_etablissements') }}">Établissements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
+
+                <!-- Auth Section -->
+                <div class="d-flex gap-2" style="align-items: center;">
+                    {% if app.user %}
+                        <span class="navbar-text" style="font-size: 14px; margin-right: 8px;">{{ app.user.prenom }}</span>
+                        <a href="{{ path('app_logout') }}" class="btn btn-sm btn-primary">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">Connexion</a>
+                        <a href="{{ path('app_register') }}" class="btn btn-sm btn-primary">S'inscrire</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </nav>
+    <!-- END NAVBAR -->
 
-    {# CONTENU #}
-    <main class="py-4">
+    <!-- Page Header (optionnel) -->
+    {% block page_header %}{% endblock %}
+
+    <!-- Main Content -->
+    {% block body %}{% endblock %}
+
+    <!-- START FOOTER -->
+    <div class="footer section-padding">
         <div class="container">
-            {% block body %}{% endblock %}
-        </div>
-    </main>
+            <div class="row">
 
-    {# FOOTER #}
-    <footer class="py-4 mt-4">
-        <div class="container text-center">
-            <p class="mb-0">&copy; {{ "now"|date("Y") }} SchoolPrepar — IT232 Développement Web II</p>
-        </div>
-    </footer>
+                <!-- Col 1: Logo & Social -->
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="single_footer">
+                        <a href="{{ path('home') }}">
+                            <img src="{{ asset('eduleb/img/logo.png') }}" alt="SchoolPrepare">
+                        </a>
+                        <p>SchoolPrepare est votre guide d'orientation scolaire. Trouvez la filière et l'établissement qui vous convient.</p>
+                        <div class="social_profile">
+                            <ul>
+                                <li><a class="f_facebook" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a class="f_twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                <li><a class="f_instagram" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a class="f_linkedin" href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+                <!-- Col 2: À propos -->
+                <div class="col-lg-2 col-sm-6 col-xs-12">
+                    <div class="single_footer">
+                        <h4>À propos</h4>
+                        <ul>
+                            <li><a href="#">À propos de nous</a></li>
+                            <li><a href="#">Nos filières</a></li>
+                            <li><a href="#">Devenir conseiller</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Nous contacter</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Col 3: Filières populaires -->
+                <div class="col-lg-2 col-sm-6 col-xs-12">
+                    <div class="single_footer">
+                        <h4>Filières</h4>
+                        <ul>
+                            <li><a href="#">Informatique</a></li>
+                            <li><a href="#">Médecine</a></li>
+                            <li><a href="#">Droit</a></li>
+                            <li><a href="#">Ingénierie</a></li>
+                            <li><a href="#">Commerce</a></li>
+                            <li><a href="#">Voir tous</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Col 4: Contact -->
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="single_footer">
+                        <h4>Nous contacter</h4>
+                        <div class="sf_contact">
+                            <span class="ti-map"></span>
+                            <p>123 Avenue de l'Éducation<br>Paris, France</p>
+                        </div>
+                        <div class="sf_contact">
+                            <span class="ti-mobile"></span>
+                            <p>+33 1 23 45 67 89</p>
+                        </div>
+                        <div class="sf_contact">
+                            <span class="ti-email"></span>
+                            <p>info@schoolprepare.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 5: Newsletter -->
+                <div class="col-lg-2 col-sm-6 col-xs-12">
+                    <div class="single_footer">
+                        <h4>Newsletter</h4>
+                        <p>Abonnez-vous pour recevoir nos actualités.</p>
+                        <form action="#" method="post">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button type="submit" class="btn_one mt-2">S'abonner</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+
+    <!-- START FOOTER COPYRIGHT -->
+    <div class="foot_copy">
+        <div class="footer_copyright">
+            <p>&copy; 2024. Tous droits réservés par <a href="#">SchoolPrepare</a></p>
+        </div>
+    </div>
+    <!-- END FOOTER COPYRIGHT -->
+
+    <!-- jQuery & Scripts -->
+    <script src="{{ asset('eduleb/js/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('eduleb/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('eduleb/js/modernizr-2.8.3.min.js') }}"></script>
+    <script src="{{ asset('eduleb/js/jquery-simple-mobilemenu.js') }}"></script>
+    <script src="{{ asset('eduleb/owlcarousel/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('eduleb/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('eduleb/js/jquery.inview.min.js') }}"></script>
+    <script src="{{ asset('eduleb/js/scrolltopcontrol.js') }}"></script>
+    <script src="{{ asset('eduleb/js/wow.min.js') }}"></script>
+    <script src="{{ asset('eduleb/js/scripts.js') }}"></script>
+
+    {% block javascripts %}{% endblock %}
+
 </body>
 </html>

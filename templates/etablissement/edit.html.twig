@@ -1,25 +1,29 @@
 {% extends 'admin/base.html.twig' %}
-{% block title %}Modifier — {{ etablissement.nom }}{% endblock %}
+
+{% block title %}Modifier un Établissement - Admin{% endblock %}
 
 {% block body %}
 <div class="page-heading">
-    <div class="page-title-headings">
-        <h3>Modifier l'Établissement</h3>
-        <a href="{{ path('app_etablissement_index') }}" class="btn btn-outline-secondary btn-sm">
-            <i class="bi bi-arrow-left me-1"></i> Retour à la liste
-        </a>
-    </div>
+    <h3>Modifier l'Établissement</h3>
 </div>
 
 <section class="section">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title"><i class="bi bi-pencil text-warning me-2"></i>{{ etablissement.nom }}</h4>
+            <h4>{{ etablissement.nom }}</h4>
         </div>
         <div class="card-body">
-            {{ include('etablissement/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-            <hr>
-            {{ include('etablissement/_delete_form.html.twig') }}
+            {% include 'etablissement/_form.html.twig' with {'button_label': 'Modifier l\'établissement'} %}
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4 class="text-danger">Zone de danger</h4>
+        </div>
+        <div class="card-body">
+            <p class="mb-3">Supprimer cet établissement (irréversible)</p>
+            {% include 'etablissement/_delete_form.html.twig' %}
         </div>
     </div>
 </section>

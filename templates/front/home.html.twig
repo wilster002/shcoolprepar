@@ -1,49 +1,301 @@
 {% extends 'front/base.html.twig' %}
 
-{% block title %}Bienvenue - SchoolPrepar{% endblock %}
+{% block title %}Accueil - SchoolPrepare - Votre guide d'orientation{% endblock %}
 
 {% block body %}
-<div class="text-center py-5">
-    <h1 class="display-5 fw-bold" style="color:#1a3c5e;">Bienvenue sur SchoolPrepar</h1>
-    <p class="lead text-muted mb-4">Veuillez choisir votre espace pour continuer :</p>
 
-    <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="{{ path('user_etablissements') }}" class="btn btn-primary btn-lg px-4">
-            <i class="bi bi-building me-2"></i>Établissements
-        </a>
-        <a href="{{ path('user_filieres') }}" class="btn btn-primary btn-lg px-4">
-            <i class="bi bi-journal-bookmark-fill me-2"></i>Filières
-        </a>
-        <a href="https://github.com/wilster002/shcoolprepar/tree/master" target="_blank" class="btn btn-outline-secondary btn-lg px-4">
-            <i class="bi bi-github me-2"></i>Voir le dépôt GitHub
-        </a>
-    </div>
-
-    <div class="row mt-5 g-4">
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm p-4 text-center h-100">
-                <i class="bi bi-journal-bookmark-fill text-primary fs-1 mb-3"></i>
-                <h5 class="fw-bold">Filières</h5>
-                <p class="text-muted">Découvrez toutes les filières disponibles et choisissez votre orientation.</p>
-                <a href="{{ path('user_filieres') }}" class="btn btn-outline-primary btn-sm mt-auto">Explorer</a>
+<!-- START HERO SECTION -->
+<section class="home_bg hb_height" style="background-image: url({{ asset('eduleb/img/bg/home-bg.jpg') }});  background-size:cover; background-position: center center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+                <div class="hero-text ht_top">
+                    <h1><span>SchoolPrepare</span> – Trouvez Votre Avenir</h1>
+                    <p>Découvrez les meilleures filières et établissements pour votre orientation scolaire. Laissez-nous vous guider vers le succès.</p>
+                </div>
+                <div class="home_sb">
+                    <form action="{{ path('user_filieres') }}" method="GET" class="banner_subs">
+                        <input type="text" class="form-control home_si" placeholder="Rechercher une filière..." required="required">
+                        <button type="submit" class="subscribe__btn">Rechercher <i class="fa fa-arrow-right"></i></button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm p-4 text-center h-100">
-                <i class="bi bi-building text-success fs-1 mb-3"></i>
-                <h5 class="fw-bold">Établissements</h5>
-                <p class="text-muted">Consultez la liste des établissements partenaires de la plateforme.</p>
-                <a href="{{ path('user_etablissements') }}" class="btn btn-outline-success btn-sm mt-auto">Explorer</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm p-4 text-center h-100">
-                <i class="bi bi-mortarboard-fill text-warning fs-1 mb-3"></i>
-                <h5 class="fw-bold">Orientation</h5>
-                <p class="text-muted">Préparez votre avenir scolaire avec SchoolPrepar.</p>
-                <a href="#" class="btn btn-outline-warning btn-sm mt-auto">En savoir plus</a>
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+                <div class="hero-text-img">
+                    <img src="{{ asset('eduleb/img/home-img2.png') }}" class="img-fluid" alt="SchoolPrepare" />
+                    <div class="home_ps">
+                        <span class="ti-user"></span>
+                        <h2>1000+</h2>
+                        <p>Étudiants</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+<!-- END HERO SECTION -->
+
+<!-- START COUNTER -->
+<section class="count_area counter_feature">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="single-counter">
+                    <span class="ti-folder sc_one"></span>
+                    <h2 class="counter-num" data-target="50">0</h2>
+                    <p>Filières</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="single-counter">
+                    <span class="ti-medall-alt sc_two"></span>
+                    <h2 class="counter-num" data-target="200">0</h2>
+                    <p>Établissements</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="single-counter">
+                    <span class="ti-id-badge sc_three"></span>
+                    <h2 class="counter-num" data-target="100">0</h2>
+                    <p>Conseillers</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="single-counter">
+                    <span class="ti-user sc_four"></span>
+                    <h2 class="counter-num" data-target="1000">0</h2>
+                    <p>Étudiants Inscrits</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END COUNTER -->
+
+<script>
+// Counter animation
+document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.counter-num');
+    const speed = 50; // milliseconds per increment
+
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        let current = 0;
+
+        const increment = Math.ceil(target / 100);
+
+        const updateCount = () => {
+            if (current < target) {
+                current += increment;
+                if (current > target) current = target;
+                counter.textContent = current + '+';
+                setTimeout(updateCount, speed);
+            }
+        };
+
+        // Start animation when element is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(counter);
+    });
+});
+</script>
+
+<!-- START WHY CHOOSE US -->
+<section class="top_cat__area section-padding" style="background-image: url({{ asset('eduleb/img/bg/shape-1.png') }});  background-size:cover; background-position: center center;">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>Pourquoi SchoolPrepare?</h2>
+            <p>Une plateforme complète pour vous guider dans votre choix d'orientation scolaire avec nos experts.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+                <div class="single_tp">
+                    <span class="sc_one">01</span>
+                    <h3>Conseillers<br />Experts</h3>
+                    <p>Des professionnels expérimentés pour vous conseiller personnellement.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+                <div class="single_tp">
+                    <span class="sc_two">02</span>
+                    <h3>Orientation<br />Qualifiée</h3>
+                    <p>Des tests et questionnaires adaptés pour trouver votre voie.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+                <div class="single_tp">
+                    <span class="sc_three">03</span>
+                    <h3>Ressources<br />Complètes</h3>
+                    <p>Tous les détails sur les filières et établissements en un seul endroit.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+                <div class="single_tp">
+                    <span class="sc_four">04</span>
+                    <h3>Support<br />Disponible</h3>
+                    <p>Une équipe toujours prête à répondre à vos questions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END WHY CHOOSE US -->
+
+<!-- START ABOUT US -->
+<section class="ab_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+                <div class="ab_img">
+                    <img src="{{ asset('eduleb/img/about1.png') }}" class="img-fluid" alt="À propos">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+                <div class="ab_content">
+                    <h2>Votre Partenaire d'Orientation</h2>
+                    <p>SchoolPrepare est la plateforme numéro 1 pour trouver la meilleure orientation scolaire. Avec nos outils modernes et nos conseillers expérimentés, nous vous aidons à prendre la bonne décision.</p>
+                    <p>Que vous soyez en lycée ou en recherche d'études supérieures, nous avons les ressources pour vous guider vers le succès.</p>
+                    <ul>
+                        <li><span class="ti-check"></span> Accès à <b>50+ filières</b> complètes</li>
+                        <li><span class="ti-check"></span> Consultez <b>200+ établissements</b> partenaires</li>
+                        <li><span class="ti-check"></span> Prenez rendez-vous avec nos conseillers</li>
+                    </ul>
+                    <a class="btn_one" href="{{ path('user_filieres') }}">Découvrir les Filières <i class="ti-arrow-top-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END ABOUT US -->
+
+<!-- START POPULAR COURSES (FILIERES) -->
+<section class="home_course section-padding">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>Filières Populaires</h2>
+            <p>Explorez nos filières les plus demandées et trouvez celle qui vous correspond.</p>
+        </div>
+        <div class="row">
+            {% if filieres|default([]) is not empty %}
+                {% for filiere in filieres|slice(0, 3) %}
+                <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+                    <div class="single_course">
+                        <div class="course_head" style="position: relative; overflow: hidden;">
+                            <img src="{{ asset('eduleb/img/course/1.png') }}" class="img-fluid" alt="{{ filiere.nom }}" />
+                            <div style="position: absolute; top: 10px; right: 10px;">
+                                {% if filiere.niveau|default(false) %}
+                                <span style="background: #525fe1; color: white; padding: 5px 10px; border-radius: 4px; font-size: 12px;">{{ filiere.niveau }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="course_content" style="display: flex; flex-direction: column; height: 100%;">
+                            <h3><a href="#">{{ filiere.nom }}</a></h3>
+                            <p style="color: #999; font-size: 14px; margin-bottom: 8px;">
+                                {% if filiere.domaine|default(false) %}
+                                <i class="ti-folder" style="color: #525fe1;"></i> {{ filiere.domaine }}
+                                {% endif %}
+                            </p>
+                            <p style="margin-bottom: 15px; flex-grow: 1;">{{ filiere.description|length > 70 ? filiere.description|slice(0, 70) ~ '...' : filiere.description }}</p>
+                            <a class="btn_one" href="#" style="margin-top: auto; display: block;">Voir Plus <i class="ti-arrow-top-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-md-12 text-center">
+                    <p class="text-muted">Aucune filière disponible pour l'instant.</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row mt-4 text-center">
+            <div class="col-md-12">
+                <a class="btn_one" href="{{ path('user_filieres') }}">Voir Toutes les Filières <i class="ti-arrow-top-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END POPULAR COURSES -->
+
+<!-- START TESTIMONIALS -->
+<section class="testi_area section-padding">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>Témoignages d'Étudiants</h2>
+            <p>Découvrez ce que nos étudiants disent de SchoolPrepare.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+                <div class="testimonial">
+                    <img src="{{ asset('eduleb/img/quote.png') }}" alt="" />
+                    <div class="testimonial_content">
+                        <i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i>
+                        <p>"SchoolPrepare m'a vraiment aidé à trouver la filière idéale. Les conseillers sont très professionnels!"</p>
+                    </div>
+                    <div class="testi_pic_title">
+                        <img src="{{ asset('eduleb/img/testimonial/1.png') }}" alt="">
+                        <h4>Marie Dupont</h4>
+                        <p>Étudiante en Informatique</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+                <div class="testimonial">
+                    <img src="{{ asset('eduleb/img/quote.png') }}" alt="" />
+                    <div class="testimonial_content">
+                        <i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i>
+                        <p>"Une plateforme très utile pour explorer différentes options. Merci SchoolPrepare!"</p>
+                    </div>
+                    <div class="testi_pic_title">
+                        <img src="{{ asset('eduleb/img/testimonial/2.png') }}" alt="">
+                        <h4>Jean Martin</h4>
+                        <p>Étudiant en Droit</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+                <div class="testimonial">
+                    <img src="{{ asset('eduleb/img/quote.png') }}" alt="" />
+                    <div class="testimonial_content">
+                        <i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i>
+                        <p>"Excellent service! J'ai pu discuter directement avec un conseiller très compétent."</p>
+                    </div>
+                    <div class="testi_pic_title">
+                        <img src="{{ asset('eduleb/img/testimonial/3.png') }}" alt="">
+                        <h4>Sophie Petit</h4>
+                        <p>Étudiante en Médecine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END TESTIMONIALS -->
+
+<!-- CTA SECTION -->
+<section class="top_cat__area section-padding">
+    <div class="container text-center">
+        <div class="section-title">
+            <h2>Prêt à Commencer?</h2>
+            <p>Inscrivez-vous maintenant et commencez votre parcours d'orientation avec SchoolPrepare.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% if not app.user %}
+                    <a class="btn_one" href="{{ path('app_register') }}">S'Inscrire Maintenant <i class="ti-arrow-top-right"></i></a>
+                {% else %}
+                    <a class="btn_one" href="{{ path('user_filieres') }}">Explorer les Filières <i class="ti-arrow-top-right"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

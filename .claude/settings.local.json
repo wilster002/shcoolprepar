@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\WILSTER\\\\Downloads\\\\eduleb\\\\eduleb\\\\assets\\\\img\\\\\" -Recurse | Select-Object FullName, Name, Extension | Format-Table -AutoSize *)",
+      "Bash(dir E:shcoolpreparpublic *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\WILSTER\\\\Downloads\\\\eduleb\\\\eduleb\\\\assets\\\\img\" -Recurse -File)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(php bin/console doctrine:migrations:diff --no-interaction)",
+      "Bash(php bin/console doctrine:query:sql \"SHOW COLUMNS FROM etablissement\")",
+      "Bash(php bin/console make:migration --no-interaction)",
+      "Bash(php -r ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Refactor: Régénérer le CRUD Établissement avec style admin *)"
+    ]
+  }
+}
