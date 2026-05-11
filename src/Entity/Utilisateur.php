@@ -182,4 +182,22 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return null;
     }
+
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'email' => $this->email,
+            'role' => $this->role,
+            'mot_de_passe' => $this->mot_de_passe,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->id = $data['id'];
+        $this->email = $data['email'];
+        $this->role = $data['role'];
+        $this->mot_de_passe = $data['mot_de_passe'];
+    }
 }
