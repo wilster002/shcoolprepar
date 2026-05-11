@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\FiliereRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FiliereRepository::class)
@@ -19,31 +20,38 @@ class Filiere
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Le nom de la filière est obligatoire")
+     * @Assert\Length(min=2, max=20)
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="La description est obligatoire")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="Les conditions d'admission sont obligatoires")
      */
     private $conditions_admission;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="Les débouchés sont obligatoires")
      */
     private $debouches;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank(message="Le niveau est obligatoire")
      */
     private $niveau;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank(message="Le domaine est obligatoire")
      */
     private $domaine;
 

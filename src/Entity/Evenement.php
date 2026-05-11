@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -19,16 +20,19 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Le titre est obligatoire")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="La date est obligatoire")
      */
     private $date_heure;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Le type est obligatoire")
      */
     private $type;
 
@@ -39,6 +43,7 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="La description est obligatoire")
      */
     private $description;
 
