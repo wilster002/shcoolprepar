@@ -34,7 +34,7 @@ class Etablissement
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Le contact est obligatoire")
-     * @Assert\Positive(message="Le numéro de contact doit être un nombre positif")
+     * @Assert\Range(min=1000000, message="Le numéro de contact doit être valide")
      */
     private $contact;
 
@@ -46,13 +46,13 @@ class Etablissement
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank(message="La latitude est obligatoire")
+     * @Assert\Range(min=-90, max=90, message="La latitude doit être entre -90 et 90")
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank(message="La longitude est obligatoire")
+     * @Assert\Range(min=-180, max=180, message="La longitude doit être entre -180 et 180")
      */
     private $longitude;
 
