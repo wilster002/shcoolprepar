@@ -10,7 +10,12 @@
       "Bash(php bin/console make:migration --no-interaction)",
       "Bash(php -r ' *)",
       "Bash(git add *)",
-      "Bash(git commit -m 'Refactor: Régénérer le CRUD Établissement avec style admin *)"
+      "Bash(git commit -m 'Refactor: Régénérer le CRUD Établissement avec style admin *)",
+      "Bash(php -S 127.0.0.1:8000 -t public)",
+      "Bash(curl -s \"http://127.0.0.1:8000/etablissement/new\")",
+      "Bash(curl -X POST http://127.0.0.1:8000/etablissement/new -d 'etablissement_type[nom]=Test&etablissement_type[localisation]=Paris&etablissement_type[contact]=0123456789&etablissement_type[type]=Lycée' -H 'Content-Type: application/x-www-form-urlencoded')",
+      "Bash(timeout 15 php bin/console server:start 127.0.0.1:8001)",
+      "Bash(curl -s \"http://127.0.0.1:8001/etablissement/new\")"
     ]
   }
 }

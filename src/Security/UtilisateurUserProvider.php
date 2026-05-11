@@ -42,8 +42,6 @@ class UtilisateurUserProvider implements UserProviderInterface
             throw new UserNotFoundException("Utilisateur avec l'ID '{$user->getId()}' non trouvé");
         }
 
-        $refreshedUser->eraseCredentials();
-
         return $refreshedUser;
     }
 
