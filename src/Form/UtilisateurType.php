@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class UtilisateurType extends AbstractType
 {
@@ -47,6 +48,13 @@ class UtilisateurType extends AbstractType
             ->add('mot_de_passe', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'mapped' => false,
+                'constraints' => [
+                    new Assert\NotBlank(['message' => 'Le mot de passe est obligatoire']),
+                    new Assert\Length([
+                        'min' => 6,
+                        'minMessage' => 'Le mot de passe doit contenir au moins 6 caractères'
+                    ]),
+                ],
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Entrez un mot de passe sécurisé',

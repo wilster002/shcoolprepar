@@ -9,11 +9,9 @@ security:
 
     providers:
         app_user_provider:
-            entity:
-                class: App\Entity\Utilisateur
-                property: email
+            id: App\Security\UtilisateurUserProvider
 
-        
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
