@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -37,11 +37,11 @@ class UtilisateurType extends AbstractType
                     'placeholder' => 'exemple@email.com',
                 ]
             ])
-            ->add('telephone', TelType::class, [
+            ->add('telephone', IntegerType::class, [
                 'label' => 'Téléphone',
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => '+33 6 00 00 00 00',
+                    'placeholder' => '0600000000',
                 ]
             ])
             ->add('mot_de_passe', PasswordType::class, [
